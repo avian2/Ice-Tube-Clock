@@ -1,3 +1,16 @@
+/* MSB -> 7 6 5 4   3 2 1 0 <- LSB
+
+      7
+     ___
+
+ 2 |     | 6
+   |  1  |
+     ___
+
+ 3 |     | 5
+   |  4  |
+     ___    O 0
+*/
 const uint8_t alphatable[] PROGMEM = {
 	0xFA, /* a */
 	0x3E, /* b */
