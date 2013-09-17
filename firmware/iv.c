@@ -36,6 +36,12 @@ THE SOFTWARE.
 
 uint8_t region = REGION_US;
 
+// Drift correction
+//
+// k = (clk_d - ref_d) / clk_d
+// drift_factor = k * 3600 * 256
+static const uint8_t drift_factor = 34;
+
 // These variables store the current time.
 volatile uint8_t time_s, time_m, time_h;
 // ... and current date
@@ -290,6 +296,11 @@ SIGNAL (TIMER2_OVF_vect) {
 
   // a minute!
   if (time_s >= 60) {
+    // shorten the first second of first drift_factor minutes
+    // in each hour by 1/256 s
+    if (time_m < drift_factor) {
+      TCNT2 = 1;
+    }
     time_s = 0;
     time_m++;
   }
