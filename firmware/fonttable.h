@@ -52,6 +52,6 @@ const uint8_t numbertable[] PROGMEM = {
   0xBE, /* 6 */
   0xE0, /* 7 */
   0xFE, /* 8 */
-  0xE6, /* 9 */
+  0xF6, /* 9 */
 };
 PGM_P numbertable_p PROGMEM = numbertable;
